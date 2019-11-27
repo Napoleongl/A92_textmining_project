@@ -1,0 +1,2 @@
+horror_movies <- read_csv("C:/Users/gustav/Desktop/imdb-horror-movie-dataset/IMDB Horror movies.csv")
+actual_plots <- str_match(pattern = "(Directed [[:alnum:]+[:space:]+]+\\.)[:print:]*(With [[[:alnum:]*[:space:]*\\'*],*\\-*]+\\.)[:print:]*([:print:]*$)",string = horror_movies$plot)
