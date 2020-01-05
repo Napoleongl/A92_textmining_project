@@ -52,16 +52,18 @@ library(ggplot2)
 theme_set(theme_minimal(base_family = "serif"))
 
 genre_counts %>% ggplot(aes(x = genre, y = movie_count, fill = included)) +
-      geom_col(col = "grey20",  width = rel(0.35)) +
       theme(panel.grid.minor = element_blank(),
             panel.grid.major.x = element_blank(),
             axis.text.x = element_text(angle = 60, hjust = 1),
             axis.ticks.x = element_line()) +
+          geom_hline(yintercept = min_count, col = "red") +
+      geom_col(col = "grey20",  width = rel(0.35)) +
       scale_y_log10(expand = c(0,0)) +
       scale_fill_manual("", values = c("grey30", "grey85")) +
-      labs(title = "Count of movies by genre", x ="Genre", y = "No of movies")
+      labs(title = "Count of movies by genre", x ="Genre", y = "No of movies",
+           subtitle = "Inclusion indicated by red line")
 
-ggsave("genre_dist.png", width = 8, height = 3.2)
+ggsave("genre_dist.png", width = 8, height = 3.5)
 
 # ==============================================
 
